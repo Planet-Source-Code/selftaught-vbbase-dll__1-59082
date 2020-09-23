@@ -1,0 +1,73 @@
+////////////////////////////////////////////////////////////
+// Name : IOleInPlaceFrame.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(00000116-0000-0000-C000-000000000046),
+ 	helpstring("IOleInPlaceFrame Interface"),
+	odl
+]
+
+interface IOleInPlaceFrame : IOleInPlaceUIWindow
+{
+
+    	typedef IOleInPlaceFrame *LPOLEINPLACEFRAME;
+
+    	typedef HGLOBAL HOLEMENU;
+
+	[helpstring("IOleInPlaceFrame::InsertMenus")]
+    	HRESULT InsertMenus
+    	(
+        	[in] HMENU hMenuShared,
+        	//[in,out] LPOLEMENUGROUPWIDTHS lpMenuWidths
+		[in] long lpMenuWidths
+    	);
+
+	[helpstring("IOleInPlaceFrame::SetMenu")]
+    	HRESULT SetMenu
+    	(
+        	[in] HMENU hMenuShared,
+        	[in] HOLEMENU hOleMenu,
+        	[in] HWND hWndActiveObject
+    	);
+
+	[helpstring("IOleInPlaceFrame::RemoveMenus")]
+    	HRESULT RemoveMenus
+    	(
+        	[in] HMENU hMenuShared
+    	);
+
+	[helpstring("IOleInPlaceFrame::SetStatusText")]
+    	HRESULT SetStatusText
+    	(
+        	[in] LPCOLESTR pszStatusText
+    	);
+
+	[helpstring("IOleInPlaceFrame::EnableModeless")]
+    	HRESULT EnableModeless
+    	(
+        	[in] BOOL fEnable
+    	);
+
+	[helpstring("IOleInPlaceFrame::TranslateAccelerator")]
+    	HRESULT TranslateAccelerator
+    	(
+        	[in] LPMSG lpMsg,
+        	[in] WORD wID
+    	);
+}

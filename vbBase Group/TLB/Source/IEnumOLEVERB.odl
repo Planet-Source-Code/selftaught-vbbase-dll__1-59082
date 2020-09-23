@@ -1,0 +1,55 @@
+////////////////////////////////////////////////////////////
+// Name : IEnumOLEVERB.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(00000104-0000-0000-C000-000000000046),
+ 	helpstring("IEnumOLEVERB Interface"),
+	odl
+]
+
+interface IEnumOLEVERB : IUnknown
+{
+    	typedef IEnumOLEVERB *LPENUMOLEVERB;
+
+	[helpstring("IEnumOLEVERB::Next")]
+    	HRESULT Next
+	(
+        	[in] ULONG celt,
+        	[in, out] LPOLEVERB rgelt,
+        	[in, out] ULONG *pceltFetched
+	);
+
+	[helpstring("IEnumOLEVERB::Skip")]
+    	HRESULT Skip
+	(
+        	[in] ULONG celt
+	);
+
+	[helpstring("IEnumOLEVERB::Reset")]
+    	HRESULT Reset
+	(
+	);
+
+	[helpstring("IEnumOLEVERB::Clone")]
+    	HRESULT Clone
+	(
+        	[in, out] IEnumOLEVERB **ppenum
+	);
+}
+

@@ -1,0 +1,106 @@
+////////////////////////////////////////////////////////////
+// Name : ITypeLib.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(00020402-0000-0000-C000-000000000046),
+ 	helpstring("ITypeLib interface"),
+	odl
+]
+
+interface ITypeLib : IUnknown
+{
+    	typedef ITypeLib * LPTYPELIB;
+
+	[helpstring("ITypeLib::GetTypeInfoCount")]
+    	UINT GetTypeInfoCount
+	(
+      	void
+      );
+
+	[helpstring("ITypeLib::GetTypeInfo")]
+    	HRESULT GetTypeInfo
+	(
+      	[in]  UINT index,
+	      [out] ITypeInfo ** ppTInfo
+      );
+
+	[helpstring("ITypeLib::GetTypeInfoType")]
+    	HRESULT GetTypeInfoType
+	(
+      	[in]  UINT index,
+      	[out] TYPEKIND * pTKind
+      );
+
+	[helpstring("ITypeLib::GetTypeInfoOfGuid")]
+	HRESULT GetTypeInfoOfGuid
+	(
+      	[in]  REFGUID guid,
+      	[out] ITypeInfo ** ppTinfo
+	);
+
+	[helpstring("ITypeLib::GetLibAttr")]
+    	HRESULT GetLibAttr
+	(
+      	//[out] TLIBATTR ** ppTLibAttr
+        	[in] long ppTLibAttr
+	);
+
+	[helpstring("ITypeLib::GetTypeComp")]
+    	HRESULT GetTypeComp
+	(
+      		//[out] ITypeComp ** ppTComp
+		[out] long * lpTComp
+	);
+
+	[helpstring("ITypeLib::GetDocumentation")]
+    	HRESULT GetDocumentation
+	(
+      	[in]  INT index,
+            [out] BSTR * pBstrName,
+            [out] BSTR * pBstrDocString,
+            [out] DWORD * pdwHelpContext,
+            [out] BSTR * pBstrHelpFile
+	);
+
+	[helpstring("ITypeLib::IsName")]
+    	HRESULT IsName
+	(
+      		[in, out] LPOLESTR szNameBuf,
+            	[in] ULONG lHashVal,
+            	[out] BOOL * pfName
+	);
+
+	[helpstring("ITypeLib::FindName")]
+    	HRESULT FindName
+	(
+      	[in, out] LPOLESTR szNameBuf,
+            [in] ULONG lHashVal,
+            [out] ITypeInfo **ppTInfo,
+            [out] MEMBERID * rgMemId,
+            [in, out] USHORT * pcFound
+	);
+
+	[helpstring("ITypeLib::ReleaseTLibAttr")]
+    	void ReleaseTLibAttr
+	(
+      	//[in] TLIBATTR * pTLibAttr
+		[in] long pTLibAttr
+
+	);
+}
