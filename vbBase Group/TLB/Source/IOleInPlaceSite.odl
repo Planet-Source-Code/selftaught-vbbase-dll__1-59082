@@ -1,0 +1,96 @@
+////////////////////////////////////////////////////////////
+// Name : IOleInPlaceSite.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(00000119-0000-0000-C000-000000000046),
+ 	helpstring("IOleInPlaceSite Interface"),
+	odl
+]
+
+interface IOleInPlaceSite : IOleWindow
+{
+
+    	typedef IOleInPlaceSite *LPOLEINPLACESITE;
+
+	[helpstring("IOleInPlaceSite::CanInPlaceActivate")]
+    	HRESULT CanInPlaceActivate
+    	(
+        	void
+    	);
+
+	[helpstring("IOleInPlaceSite::OnInPlaceActivate")]
+    	HRESULT OnInPlaceActivate
+    	(
+        	void
+    	);
+
+	[helpstring("IOleInPlaceSite::OnUIActivate")]
+    	HRESULT OnUIActivate
+    	(
+        	void
+    	);
+
+	[helpstring("IOleInPlaceSite::GetWindowContext")]
+    	HRESULT GetWindowContext
+    	(
+        	[out] IOleInPlaceFrame **ppFrame,
+        	[out] IOleInPlaceUIWindow **ppDoc,
+        	[out] LPRECT lprcPosRect,
+        	[out] LPRECT lprcClipRect,
+        	[in, out] LPOLEINPLACEFRAMEINFO lpFrameInfo
+    	);
+
+	[helpstring("IOleInPlaceSite::Scroll")]
+    	HRESULT Scroll
+    	(
+        	//[in] SIZE scrollExtant
+		[in] long lpScrollExtant
+
+    	);
+
+	[helpstring("IOleInPlaceSite::OnUIDeactivate")]
+    	HRESULT OnUIDeactivate
+    	(
+        	[in] BOOL fUndoable
+    	);
+
+	[helpstring("IOleInPlaceSite::OnInPlaceDeactivate")]
+    	HRESULT OnInPlaceDeactivate
+    	(
+        	void
+    	);
+
+	[helpstring("IOleInPlaceSite::DiscardUndoState")]
+    	HRESULT DiscardUndoState
+    	(
+        	void
+    	);
+
+	[helpstring("IOleInPlaceSite::DeactivateAndUndo")]
+    	HRESULT DeactivateAndUndo
+    	(
+        	void
+    	);
+
+	[helpstring("IOleInPlaceSite::OnPosRectChange")]
+    	HRESULT OnPosRectChange
+    	(
+        	[in] LPRECT lprcPosRect
+    	);
+}

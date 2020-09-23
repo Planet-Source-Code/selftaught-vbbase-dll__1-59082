@@ -1,0 +1,102 @@
+////////////////////////////////////////////////////////////
+// Name : vbACOMTLB.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(1c9a3362-d8b5-45a4-9d6d-a93645c1da60),
+    	helpstring("vbBase COM Support Library - based on code from vbaccelerator.com"),
+	lcid(0x0),
+    	version(1.0) 
+]
+
+library vbBaseTlb
+{
+    	importlib("STDOLE32.TLB");
+
+	interface IUnknown;
+	interface IDispatch;
+	interface IPerPropertyBrowsing;
+	interface IOleObject;
+	interface IOleClientSite;
+	interface IOleWindow;
+	interface IOleInPlaceActiveObject;
+	interface IOleControl;
+	interface IOleControlSite;
+	interface IOleInPlaceUIWindow;
+	interface IOleInPlaceFrame;
+	interface IOleInPlaceSite;
+
+	interface IEnumVARIANT;
+	interface IEnumOLEVERB;
+
+	interface ITypeLib;
+	interface ITypeInfo;
+
+	interface IMalloc;
+
+	//interface IErrorLog;
+	//interface IPropertyBag;
+	//interface IPersist;
+	//interface IPersistPropertyBag;
+	//interface ISequentialStream;
+	//interface IStream;
+	//interface IPersistStreamInit;
+
+	//interface IPropertyPage;
+	//interface IPropertyPageSite;
+
+	#include "Wintypes.odl"
+	#include "COMEnums.odl"
+	#include "COMStructures.odl"
+
+	#include "IUnknown.odl"
+	#include "IDispatch.odl"
+    #include "IPerPropertyBrowsing.odl"
+	#include "IOleObject.odl"
+	#include "IOleClientSite.odl"
+	#include "IOleWindow.odl"
+	#include "IOleInPlaceActiveObject.odl"
+	#include "IOleControl.odl"
+	#include "IOleControlSite.odl"
+	#include "IOleInPlaceUIWindow.odl"
+	#include "IOleInPlaceFrame.odl"
+	#include "IOleInPlaceSite.odl"
+
+	#include "IEnumVARIANT.odl"
+	#include "IEnumOLEVERB.odl"
+
+	#include "ITypeInfo.odl"
+	#include "ITypeLib.odl"
+
+	#include "IMalloc.odl"
+	
+	#include "ISHTypes.odl"
+	#include "IEnumIDL.odl"
+	#include "ISHFoldr.odl"
+
+	//#include "IErrorLog.odl"
+	//#include "IPropertyBag.odl"
+	//#include "IPersist.odl"
+	//#include "IPersistPropertyBag.odl"
+	//#include "ISequentialStream.odl"
+	//#include "IStream.odl"
+	//#include "IPersistStreamInit.odl"
+
+	//#include "IPropertyPage.odl"
+	//#include "IPropertyPageSite.odl"
+}

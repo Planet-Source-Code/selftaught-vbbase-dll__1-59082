@@ -1,0 +1,3 @@
+VBGROUP 5.0
+StartupProject=vbBase\Test\Project1.vbp
+Project=vbBase\vbBase.vbp

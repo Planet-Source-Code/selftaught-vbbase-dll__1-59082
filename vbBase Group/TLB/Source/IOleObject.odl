@@ -1,0 +1,181 @@
+////////////////////////////////////////////////////////////
+// Name : IOleObject.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(00000112-0000-0000-C000-000000000046),
+ 	helpstring("IOleObject Interface"),
+	odl
+]
+
+interface IOleObject : IUnknown
+{
+    	typedef IOleObject *LPOLEOBJECT;
+
+	[helpstring("IOleObject::SetClientSite")]
+    	HRESULT SetClientSite
+    	(
+        	[in] IOleClientSite *pClientSite
+    	);
+
+	[helpstring("IOleObject::GetClientSite")]
+    	HRESULT GetClientSite
+    	(
+        	[out] IOleClientSite **ppClientSite
+    	);
+
+	[helpstring("IOleObject::SetHostNames")]
+    	HRESULT SetHostNames
+    	(
+        	[in] LPCOLESTR szContainerApp,
+        	[in] LPCOLESTR szContainerObj
+    	);
+
+	[helpstring("IOleObject::Close")]
+    	HRESULT Close
+    	(
+        	[in] DWORD dwSaveOption
+    	);
+
+	[helpstring("IOleObject::SetMoniker")]
+    	HRESULT SetMoniker
+    	(
+        	[in] DWORD dwWhichMoniker,
+        	//[in] IMoniker *pmk
+		[in] long *pMk
+
+    	);
+
+	[helpstring("IOleObject::GetMoniker")]
+    	HRESULT GetMoniker
+    	(
+        	[in] DWORD dwAssign,
+        	[in] DWORD dwWhichMoniker,
+        	//[out] IMoniker **ppmk
+        	[out] long **ppMk
+    	);
+
+	[helpstring("IOleObject::InitFromData")]
+    	HRESULT InitFromData
+    	(
+       	//[in] IDataObject *pDataObject,
+        	[in] long *pDataObject,
+        	[in] BOOL fCreation,
+        	[in] DWORD dwReserved
+    	);
+
+	[helpstring("IOleObject::GetClipboardData")]
+    	HRESULT GetClipboardData
+    	(
+        	[in] DWORD dwReserved,
+        	//[out] IDataObject **ppDataObject
+        	[out] long **ppDataObject
+    	);
+
+	[helpstring("IOleObject::DoVerb")]
+    	HRESULT DoVerb
+    	(
+        	[in] LONG iVerb,
+        	[in] LPMSG lpMsg,
+        	[in] IOleClientSite *pActiveSite,
+        	[in] LONG lIndex,
+        	[in] HWND hWndParent,
+        	[in] LPRECT lprcPosRect
+    	);
+
+	[helpstring("IOleObject::EnumVerbs")]
+    	HRESULT EnumVerbs
+    	(
+        	[out] IEnumOLEVERB **ppEnumOleVerb
+    	);
+
+	[helpstring("IOleObject::Update")]
+    	HRESULT Update
+    	(
+        	void
+    	);
+
+	[helpstring("IOleObject::IsUpToDate")]
+    	HRESULT IsUpToDate
+    	(
+        	void
+    	);
+
+	[helpstring("IOleObject::GetUserClassID")]
+    	HRESULT GetUserClassID
+    	(
+        	[out] CLSID *pClsid
+    	);
+
+	[helpstring("IOleObject::GetUserType")]
+    	HRESULT GetUserType
+    	(
+        	[in] DWORD dwFormOfType,
+        	[out] LPOLESTR *pszUserType
+    	);
+
+	[helpstring("IOleObject::SetExtent")]
+    	HRESULT SetExtent
+    	(
+        	[in] DWORD dwDrawAspect,
+        	[in] SIZE *pSize
+    	);
+
+	[helpstring("IOleObject::GetExtent")]
+    	HRESULT GetExtent
+    	(
+        	[in] DWORD dwDrawAspect,
+        	//[out] SIZE *psizel
+		[in] DWORD lpSize
+    	);
+
+	[helpstring("IOleObject::Advise")]
+    	HRESULT Advise
+    	(
+        	//[in] IAdviseSink *pAdvSink,
+        	[in] long *pAdvSink,
+        	[out] DWORD *pdwConnection
+    	);
+
+	[helpstring("IOleObject::Unadvise")]
+    	HRESULT Unadvise
+    	(
+        	[in] DWORD dwConnection
+    	);
+
+	[helpstring("IOleObject::EnumAdvise")]
+    	HRESULT EnumAdvise
+    	(
+        	//[out] IEnumSTATDATA **ppenumAdvise
+        	[out] long **ppEnumAdvise
+    	);
+
+	[helpstring("IOleObject::GetMiscStatus")]
+    	HRESULT GetMiscStatus
+    	(
+        	[in] DWORD dwAspect,
+        	[out] DWORD *pdwStatus
+    	);
+
+	[helpstring("IOleObject::SetColorScheme")]
+    	HRESULT SetColorScheme
+    	(
+        	//[in] LOGPALETTE *pLogpal
+        	[in] long *pLogPal
+    	);
+}

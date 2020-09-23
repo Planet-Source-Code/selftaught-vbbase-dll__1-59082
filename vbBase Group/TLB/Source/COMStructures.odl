@@ -1,0 +1,312 @@
+////////////////////////////////////////////////////////////
+// Name : COMStructures.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+typedef struct POINT 
+{
+	DWORD X;
+	DWORD Y;
+} POINT;
+typedef POINT * LPPOINT;
+
+typedef struct POINTF 
+{
+	FLOAT X;
+      FLOAT Y;
+} POINTF;
+typedef POINTF * LPPOINTF;
+
+typedef struct SIZE 
+{
+	DWORD CX;
+	DWORD CY;
+} SIZE;
+typedef SIZE * LPSIZE;
+
+typedef struct RECT 
+{
+	DWORD Left;
+	DWORD Top;
+	DWORD Right;
+	DWORD Bottom;
+} RECT;
+typedef RECT * LPRECT;
+
+typedef struct MSG 
+{
+	HWND hWnd;
+	UINT Message; 
+	WPARAM wParam; 
+	LPARAM lParam; 
+	DWORD Time; 
+	POINT Pt; 
+} MSG;
+typedef MSG * LPMSG;
+
+typedef struct tagACCEL 
+{ 
+	BYTE fVirt; 
+	WORD Key; 
+	WORD CmdID; 
+} ACCEL; 
+typedef ACCEL * LPACCEL;
+
+typedef struct CONTROLINFO 
+{
+	//ULONG  cb;
+	LONG  cb;
+      // HACCEL hAccel;
+      LONG hAccel;
+      // USHORT cAccel;
+	LONG cAccel;
+	DWORD  dwFlags;
+} CONTROLINFO;
+typedef CONTROLINFO * LPCONTROLINFO;
+
+typedef struct OLEVERBSTRUCT 
+{
+	LONG    lVerb;
+      //LPOLESTR  lpszVerbName;
+      LONG  lpszVerbName;
+      DWORD   fuFlags;
+      DWORD grfAttribs;
+} OLEVERBSTRUCT;
+typedef OLEVERBSTRUCT * LPOLEVERB;
+
+typedef struct OLEINPLACEFRAMEINFO // OleInPlaceFrameInfo
+{
+	//UINT    cb;
+	long    cb;
+    	BOOL    fMDIApp;
+    	HWND    hWndFrame;
+    	//HACCEL  haccel;
+    	long  hAccel;
+    	//UINT    cAccelEntries;
+    	long    cAccelEntries;
+} OLEINPLACEFRAMEINFO;
+typedef OLEINPLACEFRAMEINFO * LPOLEINPLACEFRAMEINFO;
+
+typedef struct OLEMENUGROUPWIDTHS
+{
+	LONG    Width[6];
+} OLEMENUGROUPWIDTHS;
+typedef OLEMENUGROUPWIDTHS * LPOLEMENUGROUPWIDTHS;
+
+typedef struct CALPOLESTR 
+{
+	ULONG cElems;
+      //LPOLESTR * pElems;
+	DWORD pElems;
+} CALPOLESTR;
+typedef CALPOLESTR * LPCALPOLESTR;
+
+typedef struct CADWORD 
+{
+	ULONG cElems;
+      //DWORD * pElems;
+	DWORD pElems;
+} CADWORD;
+typedef CADWORD * LPCADWORD;
+
+typedef struct TYPEDESC 
+{
+	long lpItemDesc;
+	short vt;
+} TYPEDESC;
+typedef TYPEDESC * LPTYPEDESC;
+
+typedef struct tagSAFEARRAYBOUND 
+{ 
+	//unsigned long cElements; 
+	long cElements;
+	long lLbound;
+} SAFEARRAYBOUND;
+
+typedef struct tagARRAYDESC{
+	TYPEDESC tdescElem; 		// Element type. 
+	//unsigned short cDims; 		// Dimension count. 
+	short cDims;
+	SAFEARRAYBOUND rgbounds[1]; 	// Variable length array containing 
+							// one element for each dimension.
+	//long lprgbounds;					    		
+} ARRAYDESC;
+
+typedef struct PARAMDESCEX {
+    	//ULONG cBytes;               
+    	LONG cBytes;               
+    	LONG dwReserved;               
+    	//VARIANTARG varDefaultValue; 
+	VARIANT varDefaultValue; 
+} PARAMDESCEX;
+typedef PARAMDESCEX * LPPARAMDESCEX;
+
+typedef struct tagPARAMDESC {
+    	//LPPARAMDESCEX pparamdescex; 
+	long lpParamDescEx; 
+    	//USHORT wParamFlags;         
+	short wParamFlags;         
+
+} PARAMDESC;
+typedef PARAMDESC * LPPARAMDESC;
+
+typedef struct IDLDESC 
+{
+	ULONG dwReserved;
+	USHORT wIDLFlags;   /* IN, OUT, etc */
+} IDLDESC;
+typedef IDLDESC * LPIDLDESC;
+
+typedef struct TYPEATTR {
+	GUID typeguid;       
+	LCID typelcid;          
+	long  dwReserved;
+	MEMBERID memidConstructor;  
+	MEMBERID memidDestructor;   
+	//LPOLESTR lpstrSchema;
+	long lpstrSchema;
+	DWORD cbSizeInstance;    
+	TYPEKIND typekind;     
+	WORD cFuncs;        
+	WORD cVars;         
+	WORD cImplTypes;        
+	WORD cbSizeVft;     
+	WORD cbAlignment;       
+	WORD wTypeFlags;
+	WORD wMajorVerNum;
+	WORD wMinorVerNum;      
+	TYPEDESC tdescAlias;   
+	IDLDESC idldescType;
+} TYPEATTR;
+typedef TYPEATTR * LPTYPEATTR;
+
+typedef struct tagELEMDESC {    
+    	TYPEDESC tdesc;           
+    	PARAMDESC ParamDesc;      
+
+} ELEMDESC;
+typedef ELEMDESC * LPELEMDESC;
+
+typedef struct FUNCDESC {
+    	MEMBERID MemID;
+    	//[size_is(cScodes)] SCODE * lprgscode;
+	long lprgSCode;
+    	//[size_is(cParams)] ELEMDESC * lprgelemdescParam; /* array of param types */
+	long lprgElemDescParam;
+    	FUNCKIND FuncKind;
+    	INVOKEKIND InvKind;
+    	CALLCONV CallConv;
+    	SHORT cParams;
+    	SHORT cParamsOpt;
+    	SHORT oVft;
+    	SHORT cScodes;
+    	ELEMDESC ElemDescFunc;
+    	WORD wFuncFlags;
+} FUNCDESC;
+typedef FUNCDESC * LPFUNCDESC;
+
+typedef struct VARDESC 
+{ 
+	MEMBERID memid; 
+	//OLECHAR FAR* lpstrSchema; // Reserved for future use. 
+	long lpstrSchema;
+	//union { 
+		// VAR_PERINSTANCE, the offset of this 
+		// variable within the instance. 
+		//unsigned long oInst; 
+
+		// VAR_CONST, the value of the constant. 
+		// VARIANT FAR* lpvarValue; 
+		long lpVarValue; 
+
+	//} UNION_NAME(u); 
+	ELEMDESC ElemDescVar; 
+	short wVarFlags; 
+	VARKIND varkind;
+
+} VARDESC;
+typedef VARDESC * LPVARDESC;
+
+
+// Storage stat buffer 
+typedef struct STATSTG 
+{
+	LPOLESTR pwcsName;
+      DWORD type;
+      CURRENCY cbSize;
+      CURRENCY mtime;
+      CURRENCY ctime;
+      CURRENCY atime;
+      DWORD grfMode;
+      DWORD grfLocksSupported;
+      CLSID clsid;
+      DWORD grfStateBits;
+	DWORD reserved;
+} STATSTG;
+
+/*
+typedef struct STATSTGO 
+{
+	LPOLESTR pwcsName;
+      DWORD type;
+      ULARGE_INTEGER cbSize;
+      FILETIME mtime;
+      FILETIME ctime;
+      FILETIME atime;
+      DWORD grfMode;
+      DWORD grfLocksSupported;
+      CLSID clsid;
+      DWORD grfStateBits;
+	DWORD reserved;
+} STATSTGO;
+*/
+
+typedef struct DISPPARAMS
+{
+	//VARIANTARG FAR* rgvarg; 
+	long rgvarg; 
+	DISPID rgdispidNamedArgs; 
+	//unsigned int cArgs; 
+	long cArgs;
+	//unsigned int cNamedArgs; 
+	long cNamedArgs;
+} DISPPARAMS;
+
+typedef struct TLIBATTR 
+{
+	GUID guid;
+      LCID lcid;
+      SYSKIND syskind;
+      WORD wMajorVerNum;
+      WORD wMinorVerNum;
+      WORD wLibFlags;
+} TLIBATTR;
+typedef TLIBATTR * LPTLIBATTR;
+
+typedef struct PROPPAGEINFO 
+{
+	//ULONG    cb;
+	LONG    cb;
+      //LPOLESTR pszTitle;
+      LONG    pszTitle;
+      SIZE     size;
+      //LPOLESTR pszDocString;
+      LONG pszDocString;
+      //LPOLESTR pszHelpFile;
+      LONG pszHelpFile;
+      DWORD    dwHelpContext;
+} PROPPAGEINFO;
+typedef PROPPAGEINFO * LPPROPPAGEINFO;

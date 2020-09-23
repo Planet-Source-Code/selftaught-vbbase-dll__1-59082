@@ -1,0 +1,183 @@
+////////////////////////////////////////////////////////////
+// Name : ITypeInfo.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(00020401-0000-0000-C000-000000000046),
+ 	helpstring("ITypeInfo interface"),
+	odl
+]
+
+interface ITypeInfo : IUnknown
+{
+    	typedef ITypeInfo *LPTYPEINFO;
+
+	[helpstring("ITypeInfo::GetTypeAttr")]
+    	HRESULT GetTypeAttr
+    	(
+		//[in] TYPEATTR *pptypeattr
+        	[in] long pptypeattr
+    	);
+
+	[helpstring("ITypeInfo::GetTypeComp")]
+    	HRESULT GetTypeComp
+    	(
+		//[out] ITypeComp **pptcomp
+        	[out] long **ppTComp
+    	);
+
+	[helpstring("ITypeInfo::GetFuncDesc")]
+    	HRESULT GetFuncDesc
+    	(
+        	[in] UINT Index,
+		//[out] FUNCDESC **pppfuncdesc
+		[in] long lpFuncDesc
+
+    	);
+
+	[helpstring("ITypeInfo::GetVarDesc")]
+    	HRESULT GetVarDesc
+    	(
+        	[in] UINT Index,
+		//[out] VARDESC **ppvardesc
+        	[in] long lpVarDesc
+    	);
+
+	[helpstring("ITypeInfo::GetNames")]
+    	HRESULT GetNames
+    	(
+        	[in] MEMBERID MemID,
+        	[out] BSTR *rgbstrNames,
+        	[in] UINT cMaxNames,
+        	[out] UINT *pcNames
+    	);
+
+	[helpstring("ITypeInfo::GetRefTypeOfImplType")]
+    	HRESULT GetRefTypeOfImplType
+    	(
+        	[in] UINT index,
+		//[out] HREFTYPE *hpreftype
+		[out] ULONG *hpreftype
+    	);
+
+	[helpstring("ITypeInfo::GetImplTypeFlags")]
+    	HRESULT GetImplTypeFlags
+    	(
+        	[in] UINT index,
+        	[out] INT * pimpltypeflags
+    	);
+
+	[helpstring("ITypeInfo::GetIDsOfNames")]
+    	HRESULT GetIDsOfNames
+    	(
+        	[in] OLECHAR **rglpszNames,
+        	[in] UINT cNames,
+        	[out] MEMBERID *rgmemid
+    	);
+
+	[helpstring("ITypeInfo::Invoke")]
+    	HRESULT Invoke
+    	(
+    	  	[in] void *pvInstance,
+        	[in] MEMBERID memid,
+        	[in] WORD wFlags,
+        	[in] DISPPARAMS *pdispparams,
+        	[out] VARIANT *pvarResult,
+        	[out] EXCEPINFO *pexcepinfo,
+        	[out] UINT *puArgErr
+    	);
+
+	[helpstring("ITypeInfo::GetDocumentation")]
+    	HRESULT GetDocumentation
+    	(
+        	[in] MEMBERID memid,
+        	[out] BSTR *pbstrName,
+        	[out] BSTR *pbstrDocString,
+        	[out] DWORD *pdwHelpContext,
+        	[out] BSTR * pbstrHelpFile
+    	);
+
+	[helpstring("ITypeInfo::GetDllEntry")]
+    	HRESULT GetDllEntry
+    	(
+        	[in] MEMBERID memid,
+        	[in] INVOKEKIND invkind,
+        	[out] BSTR *pbstrDllName,
+        	[out] BSTR *pbstrName,
+        	[out] WORD *pwOrdinal
+    	);
+
+	[helpstring("ITypeInfo::GetRefTypeInfo")]
+    	HRESULT GetRefTypeInfo
+    	(
+		//[in] HREFTYPE hreftype,
+        	[in] ULONG hreftype,
+        	[out] ITypeInfo ** pptinfo
+    	);
+
+	[helpstring("ITypeInfo::AddressOfMember")]
+    	HRESULT __stdcall AddressOfMember
+    	(
+        	[in] MEMBERID memid,
+        	[in] INVOKEKIND invkind,
+        	[out] void **ppv
+    	);
+
+	[helpstring("ITypeInfo::CreateInstance")]
+    	HRESULT CreateInstance
+    	(
+        	[in] IUnknown * puncOuter,
+        	[in] REFIID riid,
+        	[out] void **ppvObj
+    	);
+
+	[helpstring("ITypeInfo::GetMops")]
+    	HRESULT GetMops
+    	(
+        	[in] MEMBERID memid,
+        	[out] BSTR *pbstrMops
+    	);
+
+	[helpstring("ITypeInfo::GetContainingTypeLib")]
+    	HRESULT GetContainingTypeLib
+    	(
+		[out] ITypeLib **pptlib,
+        	[out] UINT *pindex
+    	);
+
+	[helpstring("ITypeInfo::ReleaseTypeAttr")]
+    	void ReleaseTypeAttr
+    	(
+		//[in] TYPEATTR *ptypeattr
+        	[in] long ptypeattr
+    	);
+
+	[helpstring("ITypeInfo::ReleaseFuncDesc")]
+    	void ReleaseFuncDesc
+    	(
+		//[in] FUNCDESC *pfuncdesc
+        	[in] long pfuncdesc
+    	);
+
+	[helpstring("ITypeInfo::ReleaseVarDesc")]
+    	void ReleaseVarDesc
+    	(
+		//[in] VARDESC *pvardesc
+        	[in] long pvardesc
+    	);
+}

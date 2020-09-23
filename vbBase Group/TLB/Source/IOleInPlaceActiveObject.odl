@@ -1,0 +1,59 @@
+////////////////////////////////////////////////////////////
+// Name : IOleInPlaceActiveObject.odl
+// Author : Paul R. Wilde
+// Created : 23rd April 1999
+/////////////////////////////////////////////////////////////
+// Copyright © Paul R. Wilde 1999. All Rights Reserved.
+/////////////////////////////////////////////////////////////
+// Bug reports, suggestions & comments should be emailed to :
+// prw.exponential@dial.pipex.com
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// Revision history
+/////////////////////////////////////////////////////////////
+// 23/04/99
+// Initial development
+/////////////////////////////////////////////////////////////
+
+
+[
+    	uuid(00000117-0000-0000-C000-000000000046),
+ 	helpstring("IOleInPlaceActiveObject Interface"),
+	odl
+]
+
+interface IOleInPlaceActiveObject : IOleWindow
+{
+	[helpstring("IOleInPlaceActiveObject::TranslateAccelerator")]
+    	LONG TranslateAccelerator
+    	(
+        	[in] LONG lpMsg
+    	);
+
+	[helpstring("IOleInPlaceActiveObject::OnFrameWindowActivate")]
+    	LONG OnFrameWindowActivate
+    	(
+        	[in] BOOL fActivate
+    	);
+
+	[helpstring("IOleInPlaceActiveObject::OnDocWindowActivate")]
+    	LONG OnDocWindowActivate
+    	(
+        	[in] BOOL fActivate
+    	);
+
+	[helpstring("IOleInPlaceActiveObject::ResizeBorder")]
+    	LONG ResizeBorder
+    	(
+        	[in] LONG prcBorder,
+        	[in] IOleInPlaceUIWindow *pUIWindow,
+        	[in] BOOL fFrameWindow
+    	);
+
+	[helpstring("IOleInPlaceActiveObject::EnableModeless")]
+    	LONG EnableModeless
+    	(
+        	[in] BOOL fEnable
+    	);
+}
